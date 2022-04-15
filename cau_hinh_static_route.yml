@@ -1,0 +1,22 @@
+---
+- name: Cau hinh static route R1
+  hosts: R1
+  gather_facts: no
+
+  tasks:
+    - name: config static route
+      ios_static_route:
+        prefix: 192.168.2.0
+        mask: 255.255.255.0
+        next_hop: 192.168.12.2
+
+- name: Cau hinh static route R2
+  hosts: R2
+  gather_facts: no
+  
+  tasks:
+    - name: config static route
+      ios_static_route:
+        prefix: 192.168.1.0
+        mask: 255.255.255.0
+        next_hop: 192.168.12.1
